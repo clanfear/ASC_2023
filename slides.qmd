@@ -14,7 +14,7 @@ history: false
 
 
 
-## Gun carrying over the life course {background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.3"}
+## [Gun carrying over the life course:]{.r-fit-text} {background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.3"}
 
 ### Onset, continuity, and exposure to gun violence from adolescence to early adulthood
 
@@ -58,8 +58,6 @@ gg_color_hue <- function(n) {
 ## [Gun homicide is mostly handgun homicide]{.r-fit-text}{background-image="img/stephan-cassara-KnAIsBuitGg-unsplash.jpg" background-opacity="0.1"}
 
 ```{r}
-#| cache: true
-
 load("./data/shr_gun_type.RData")
 shr_gun_type |>
   mutate(pr = n/sum(n),
@@ -94,8 +92,6 @@ Most concealed handgun research focuses on adolescents
 But handgun offending occurs throughout the life course
 
 ```{r handgun-homicide}
-#| cache: true
-
 load("./data/shr_props.RData")
 col_vec <- setNames(c("#00BFC4", "#F8766D", "grey50"), c("Adolescence", "Early\nAdulthood", ""))
 shr_props |>
@@ -159,7 +155,7 @@ We know little about **gun carrying over the life course**
    * Average ages 25 to 40 in 2021
 
 * Key measures:
-   * **Initiation**: Age first carried a concealed gun
+   * **Onset**: Age first carried a concealed gun
    * **Continuity**: Carried in past year (wave 5 only)
    * **Exposure**: Age first was shot or saw someone else shot
 
@@ -173,8 +169,6 @@ When does **onset** of concealed carry occur?
 
 
 ```{r}
-#| cache: true
-
 load("../../data/derived/survival_data.RData")
 draw_curve <- function(x, noaxis=FALSE){
   plot_out <- plot_age_curve(x, "concealed_carry", min_at_risk = 10, weights = TRUE, w5_sample = FALSE, trim_weights = 0.95, intervals = FALSE, font_fam = plot_font) +
@@ -231,12 +225,10 @@ draw_curve("race") + draw_curve("sex", noaxis = TRUE) + draw_curve("cohort", noa
 * Rapid rise in adolescence
 * Steady rise throughout early adulthood
 
-## [Carry and onset of gun use]{.r-fit-text}{background-image="img/pedro-lastra-5Bv3EcijAl4-unsplash.jpg" background-opacity="0.1"}
+## [Onset of gun use by concealed carry status]{.r-fit-text}{background-image="img/pedro-lastra-5Bv3EcijAl4-unsplash.jpg" background-opacity="0.1"}
 
 
 ```{r}
-#| cache: true
-
 load("./data/cum_gun_use.RData")
 cum_gun_use |>
     mutate(cdf = cdf*100) |>
@@ -272,8 +264,8 @@ cum_gun_use |>
         plot.margin = margin(0,1,0,1))
 ```
 
-* 74% of young carriers used gun by 21
-    * Those who didn't never used a gun after 21
+* 42% of young carriers used gun by 21
+    * Those who didn't never used a gun later in life
 * Lifetime gun use nearly equal by age 40
 
 
@@ -286,11 +278,9 @@ Is there **continuity** in carry over the life course?
 
 
 ```{r}
-#| cache: true
-
 load("../../data/derived/continuity_plot_data.RData")
 continuity_plot_data |> 
-  mutate(Initiation = factor(ifelse(pre_21, "Before\n21", "After\n21"), levels = c("Before\n21", "After\n21")),
+  mutate(Initiation = factor(ifelse(pre_21, "Onset\nbefore\n21", "After\n21"), levels = c("Onset\nbefore\n21", "After\n21")),
          concealed_carry_status = 
            fct_recode(concealed_carry_status, 
                       `No carry\nin past year` = "no carry",
@@ -301,9 +291,9 @@ continuity_plot_data |>
   ggplot(aes(x = concealed_carry_status, group = Initiation, fill = Initiation, y = pr)) +
   geom_col(position = "dodge") +
    geom_text(data = ~ . |> distinct(Initiation) |>
-               mutate(pr = 0.07,
-                      x = ifelse(Initiation == "Before\n21", .77, 1.23)),
-            aes(x = x, label = Initiation, y = pr), color = "black", vjust = 0.5, hjust = 0.5, size = 9, lineheight = .8,
+               mutate(pr = 0.02,
+                      x = ifelse(Initiation == "Onset\nbefore\n21", .77, 1.23)),
+            aes(x = x, label = Initiation, y = pr), color = "black", vjust = 0, hjust = 0.5, size = 9, lineheight = .8,
             family = plot_font) +
   theme_minimal(base_size = 24) +
   coord_cartesian(ylim = c(0, 0.7)) +
@@ -445,6 +435,8 @@ Contact:
 | Institute of Criminology
 | University of Cambridge
 | [cl948\@cam.ac.uk](mailto:cl948@cam.ac.uk)
+
+&zwj;
 
 For more about the PHDCN+:
 
