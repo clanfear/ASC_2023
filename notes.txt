@@ -1,9 +1,17 @@
-Outline
-  Hook
-  Lifecourse curves
-  Continuity
-  Exposure
-
-
-To do:
-  Do year plot, only for ASC to highlight sharp uptick post-covid
+Things to do:
+  Note exposure to violence concentrated in adolescence but still happens across life course
+  Four cohorts aging through quite different contexts
+  Say what cumulative onset curves are; they're Kaplan-Meiers
+  Lead into gun use by pointing out the split at 21; note legality of carry
+  Define used gun at opening of used gun
+  Past-year, clarifying it is wave 5 sample only; proportions of pre-21 and post-21 carriers
+  Counterfactual approach is about defining clear treatment and follow-up periods
+    Not looking for people who saw someone shot because they did it
+  What to say for imputation estimator?
+  Exposure is not limited to those who every carried; it is prob of carrying in general
+    Exposure periods is all time preceding the outcome period; e.g., up to 21 for 21 to 27
+	Excludes anyone who already carried by outcome time; this is onset models
+  Selection into processes
+    Individual-context interaction; have some good ideas about what selects into adolescent track, but why is there so little persistence? 
+	Only looked into onset; frequency is important to know; carrying one or twice less risky than constantly
+	Macro-context: As we saw earlier, large spikes around 2021; this was covid and post-Floyd, also seemed to be increases around 2016, suggesting instability increases carry
